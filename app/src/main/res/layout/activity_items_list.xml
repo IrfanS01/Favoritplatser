@@ -8,8 +8,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/itemsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_view" /> <!-- Ovo je referenca na layout za pojedinačne stavke -->
+        android:layout_width="408dp"
+        android:layout_height="487dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_view" />
+
+    <Button
+        android:id="@+id/buttonB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:hint="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" /> <!-- Ovo je referenca na layout za pojedinačne stavke -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun gotToAddActivity() {
-        val intent = Intent(this, AddItemActivity::class.java)
+        val intent = Intent(this, ItemsListActivity::class.java)
         startActivity(intent)
     }
 

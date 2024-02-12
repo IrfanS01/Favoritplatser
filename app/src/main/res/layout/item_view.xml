@@ -9,5 +9,6 @@
         android:id="@+id/itemNameTextView"
         android:layout_width="372dp"
         android:layout_height="72dp"
+        android:text="abc"
         android:textSize="18sp" />
 </LinearLayout>

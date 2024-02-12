@@ -1,4 +1,5 @@
 package com.example.favoritplatser
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -6,13 +7,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.favoritplatser.R
 
-class ItemsAdapter(private val items: List<Item>) : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
+class ItemsAdapter(val context: Context, private val items: List<Item>) : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nameTextView: TextView = itemView.findViewById(R.id.itemNameTextView)
+
+
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nameTextView: TextView = itemView.findViewById(R.id.itemNameTextView)
 
         fun bind(item: Item) {
-            nameTextView.text = item.name
+
             // Postavite vrijednosti za ostale view-ove u itemView
         }
     }
@@ -23,7 +26,10 @@ class ItemsAdapter(private val items: List<Item>) : RecyclerView.Adapter<ItemsAd
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(items[position])
+        var item=(items[position])
+        holder.nameTextView.text = item.name
+
+
     }
 
     override fun getItemCount() = items.size

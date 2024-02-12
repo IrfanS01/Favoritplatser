@@ -1,5 +1,6 @@
 package com.example.favoritplatser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -99,6 +100,8 @@ class AddItemActivity : AppCompatActivity() {
                     db.collection("users").document(user.uid).collection("items").document(itemId)
                         .update("documentId", itemId) // Ažuriramo 'item' s njegovim ID
                         .addOnSuccessListener {
+                            finish()
+
                             Toast.makeText(this, "Item added successfully and documentId updated.", Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e ->
