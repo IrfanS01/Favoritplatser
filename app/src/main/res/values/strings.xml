@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FavoritPlatser</string>
+    <string-array name="item_categories">
+        <item>Kategorija 1</item>
+        <item>Kategorija 2</item>
+        <item>Kategorija 3</item>
+
+    </string-array>
 </resources>

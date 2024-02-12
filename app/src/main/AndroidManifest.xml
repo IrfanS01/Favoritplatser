@@ -12,18 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FavoritPlatser"
         tools:targetApi="31">
+        <activity android:name=".ItemsListActivity">
+            <!-- Možete dodati intent-filter ako želite da ova aktivnost bude početni ekran -->
+        </activity>
+
         <activity
             android:name=".AddItemActivity"
             android:exported="false" />
-        <activity
-            android:name=".addItem"
-            android:exported="false" />
+        <!-- Uklonjeni neispravni redak -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

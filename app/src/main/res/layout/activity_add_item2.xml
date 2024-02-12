@@ -6,25 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".AddItemActivity">
 
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="70dp"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/itemNameView"
         android:layout_width="wrap_content"
-        android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
-        android:layout_marginTop="100dp"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="namn"
+        android:hint="Namn"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
+    <EditText
+        android:id="@+id/itemDescriptionView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="SAVE"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="DescriptionView"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemNameView" />
+
+    <EditText
+        android:id="@+id/itemLatitudeView"
+        android:layout_width="wrap_content"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="LatitudeView"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemDescriptionView" />
+
+    <EditText
+        android:id="@+id/itemLongitudeView"
+        android:layout_width="wrap_content"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="LongtitudeView"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemLatitudeView" />
+    <Spinner
+        android:id="@+id/itemCategorySpinner"
+        android:layout_width="0dp"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemLongitudeView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
