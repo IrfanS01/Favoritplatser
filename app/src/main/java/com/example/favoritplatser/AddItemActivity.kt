@@ -1,17 +1,14 @@
 package com.example.favoritplatser
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.annotation.ContentView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.PropertyName
 import com.google.firebase.firestore.firestore
@@ -28,7 +25,7 @@ class AddItemActivity : AppCompatActivity() {
     lateinit var latitudeView: EditText
     lateinit var longitudeView: EditText
     lateinit var categorySpinner: Spinner
-    //lateinit var saveButton: Button
+    lateinit var saveButton: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +41,9 @@ class AddItemActivity : AppCompatActivity() {
         nameView = findViewById(R.id.itemNameView)
         descriptionView = findViewById(R.id.itemDescriptionView)
         latitudeView = findViewById(R.id.itemLatitudeView) // Ispravno koristi ID iz layouta
-        longitudeView = findViewById(R.id.itemLongitudeView) // Ispravno koristi ID iz layouta
+        longitudeView = findViewById(R.id.tvItemLongitudeView) // Ispravno koristi ID iz layouta
         categorySpinner = findViewById(R.id.itemCategorySpinner)
-        //saveButton = findViewById(R.id.button2)
+        saveButton = findViewById(R.id.button2)
 
         // Postavljanje CustomSpinnerAdapter-a na categorySpinner
         val myAdapter = CustomSpinnerAdapter(
@@ -118,17 +115,16 @@ class AddItemActivity : AppCompatActivity() {
 
     }
 
-    }
+}
 
 
-    data class Item(
-        @PropertyName("documentId") var documentId: String? = null,
-        @PropertyName("name") var name: String? = null,
-        @PropertyName("description") var description: String? = null,
-        @PropertyName("latitude") var latitude: Double? = null,
-        @PropertyName("longitude") var longitude: Double? = null,
-        @PropertyName("category") var category: String? = null,
-        @PropertyName("done") var done: Boolean = false
-    )
-
+data class Item(
+    @PropertyName("documentId") var documentId: String? = null,
+    @PropertyName("name") var name: String? = null,
+    @PropertyName("description") var description: String? = null,
+    @PropertyName("latitude") var latitude: Double? = null,
+    @PropertyName("longitude") var longitude: Double? = null,
+    @PropertyName("category") var category: String? = null,
+    @PropertyName("done") var done: Boolean = false
+)
 

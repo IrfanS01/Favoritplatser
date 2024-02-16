@@ -7,16 +7,26 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.favoritplatser.R
 
-class ItemsAdapter(val context: Context, private val items: List<Item>) : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
+class ItemsAdapter(private val items: List<Item>, private val listener: (Item) -> Unit) : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
 
+    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val tvName: TextView = itemView.findViewById(R.id.tvItemNameView)
+        val tvDescription: TextView = itemView.findViewById(R.id.tvItemDescriptionView)
+        val tvLatitude: TextView = itemView.findViewById(R.id.tvItemLatitudeView)
+        val tvLongitude: TextView = itemView.findViewById(R.id.tvItemLongitudeView)
+        val tvCategory:TextView = itemView.findViewById(R.id.tvItemCategoryView)
 
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.itemNameTextView)
+        fun bind(item: Item, listener: (Item) -> Unit) {
+            itemView.setOnClickListener { listener(item) }
 
-        fun bind(item: Item) {
+            tvName.text = item.name ?: "N/A"
+            tvDescription.text = item.description ?: "N/A"
+            tvCategory.text = item.category ?: "N/A"
+            tvLatitude.text = item.latitude?.toString() ?: "N/A"
+            tvLongitude.text = item.longitude?.toString() ?: "N/A"
 
-            // Postavite vrijednosti za ostale view-ove u itemView
+            // Ovdje dodajte postavljanje ostalih podataka o stavci
         }
     }
 
@@ -25,12 +35,14 @@ class ItemsAdapter(val context: Context, private val items: List<Item>) : Recycl
         return ItemViewHolder(itemView)
     }
 
+
+
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        var item=(items[position])
-        holder.nameTextView.text = item.name
-
-
+        val item = items[position]
+        holder.bind(item, listener)
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount(): Int = items.size
 }
+
+

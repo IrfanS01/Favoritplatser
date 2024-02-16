@@ -24,7 +24,7 @@ class ItemsListActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         val recycleView = findViewById<RecyclerView>(R.id.itemsRecyclerView)
-         recycleView.layoutManager = LinearLayoutManager(this)
+        recycleView.layoutManager = LinearLayoutManager(this)
 
         // Pokušajte dohvatiti i prikazati stavke
         fetchItems()
@@ -45,7 +45,7 @@ class ItemsListActivity : AppCompatActivity() {
     override fun onResume() {
 
         super.onResume()
-    fetchItems()
+        fetchItems()
         val recycleView = findViewById<RecyclerView>(R.id.itemsRecyclerView)
         recycleView.adapter?.notifyDataSetChanged()
     }
@@ -62,10 +62,27 @@ class ItemsListActivity : AppCompatActivity() {
                         itemsList.add(item)
                     }
                     val itemsRecyclerView: RecyclerView = findViewById(R.id.itemsRecyclerView)
-                    itemsRecyclerView.adapter = ItemsAdapter(this, itemsList)
+                    // Ovdje instancirate ItemsAdapter s lambda izrazom
+                    val adapter = ItemsAdapter(itemsList) { item ->
+                        // Ovdje implementirate što se događa kada se klikne na stavku
+                        val intent = Intent(this@ItemsListActivity, DetailActivity::class.java).apply {
+                            putExtra("ITEM_NAME", item.name)
+                            putExtra("ITEM_DESCRIPTION", item.description)
+                             putExtra("ITEM_LATITUDE",item.latitude.toString())
+                             putExtra("ITEM_LONGITUDE",item.longitude.toString())
+                             putExtra("ITEM_CATEGORY",item.category)
+
+                            // Dodajte ostale podatke o stavci koje želite proslijediti
+                        }
+                        startActivity(intent)
+                    }
+                    itemsRecyclerView.adapter = adapter
+                    itemsRecyclerView.layoutManager = LinearLayoutManager(this@ItemsListActivity)
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Error fetching items", Toast.LENGTH_SHORT).show()
                 }
         }
-    }}
+    }
+
+}
